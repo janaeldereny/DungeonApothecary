@@ -2,16 +2,38 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+   public ItemScriptableObject[] items = new ItemScriptableObject[2];
+   public bool AddItem(ItemScriptableObject item)
+   {
+       for (int i = 0; i < items.Length; i++)
+       {
+           if (items[i] == null)
+           {
+               items[i] = item;
+               return true;
+           }
+       }
+       return false;
+   }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   public ItemScriptableObject DropItem()
+   {
+      if (items[1] != null)
+        {
+            ItemScriptableObject droppedItem = items[1];
+            items[1] = null;
+            return droppedItem;
+        }
+
+        else if (items[0] != null)
+        {
+            ItemScriptableObject droppedItem = items[0];
+            items[0] = null;
+            return droppedItem;
+        }
+
+       return null;
+   }
+
+
 }
