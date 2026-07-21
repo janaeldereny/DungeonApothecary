@@ -39,8 +39,6 @@ public class PlayerMovement : MonoBehaviour
        
     }
     
-
-
 void flipSprite()
 {
     if (moveInput.x > 0)
