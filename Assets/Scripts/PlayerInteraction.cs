@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    [SerializeField] private InventoryUi inventoryUi;    
     private Chest currentChest;
     private Basket currentBasket;
     [SerializeField] private Inventory inventory;
@@ -19,6 +20,7 @@ public class PlayerInteraction : MonoBehaviour
             
             if (inventory.AddItem(currentChest.item))
             {
+                inventoryUi.Refresh(); 
                 ItemScriptableObject added = currentChest.item;
                 currentChest.item = null;
                 StartCoroutine(currentChest.Respawn());
@@ -39,6 +41,7 @@ public class PlayerInteraction : MonoBehaviour
         if (currentBasket != null)
         {
             ItemScriptableObject droppedItem = inventory.DropItem();
+            inventoryUi.Refresh(); 
 
             Debug.Log(droppedItem + " item dropped");
         }

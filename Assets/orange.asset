@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemScriptableObject
   itemName: orangepotion
   itemType: 1
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: -3886060861757886202, guid: 197d90618d7b8440580e0786c76b542d, type: 3}

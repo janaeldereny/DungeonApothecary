@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemScriptableObject
   itemName: bluepotion
   itemType: 1
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 1085738926394089332, guid: 50610cfd5b541434aab487e605b898b7, type: 3}

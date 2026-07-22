@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemScriptableObject
   itemName: pear
   itemType: 1
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: -1839024248356978683, guid: c4774e24d922041ab88b7df5d809a57d, type: 3}
