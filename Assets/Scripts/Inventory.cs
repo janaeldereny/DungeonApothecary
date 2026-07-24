@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+     [SerializeField] private InventoryUi inventoryUi; 
    public ItemScriptableObject[] items = new ItemScriptableObject[2];
    public bool AddItem(ItemScriptableObject item)
    {
@@ -33,6 +34,14 @@ public class Inventory : MonoBehaviour
         }
 
        return null;
+   }
+
+   public void ConsumeAndCraft(ItemScriptableObject cure)
+   {
+        items[0]= cure;
+        items[1] = null;
+        inventoryUi.Refresh();
+      
    }
 
 
