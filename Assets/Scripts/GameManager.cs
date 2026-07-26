@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         if (hearts <= 0)
         {
+            Debug.Log ("Game Over");
             isGameover=true;
             GameOver();
         }

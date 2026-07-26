@@ -12,6 +12,10 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private Enemy currentEnemy;
     [SerializeField] private CraftManager craftManager;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private PlayerHealth playerHealth;
+
+    //[SerializeField] public EnemySO enemyData;
+
 
     //SerializeField] private bool isFull = false;
 
@@ -26,7 +30,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         GameInputManager.Instance.OnInteract -= Interact_performed;
         GameInputManager.Instance.OnDrop -= Drop_performed;
-        //Disable();
     }
 
     private void Interact_performed()
@@ -83,7 +86,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             currentChest = chest;
 
-            Debug.Log("Entered Chest");
+            //Debug.Log("Entered Chest");
 
         }
 
@@ -93,7 +96,7 @@ public class PlayerInteraction : MonoBehaviour
 
             currentBasket = basket;
 
-            Debug.Log("Entered Basket");
+            //Debug.Log("Entered Basket");
 
         }
 
@@ -101,25 +104,31 @@ public class PlayerInteraction : MonoBehaviour
         if (craftingtable != null)
         {
              table = craftingtable;
-             Debug.Log("Entered table");
+             //Debug.Log("Entered table");
         }
 
         Enemy enemy = other.GetComponent<Enemy>();
-        if (enemy != null)
+        if (enemy != null && ! gameManager.isGameover)
         {
             currentEnemy = enemy;
             Debug.Log("Touched an enemy");
+{
+        ItemScriptableObject heldCure = inventory.items[0];
 
-            if (craftManager.isCure == false && !gameManager.isGameover)
+            if (heldCure == enemy.enemyData.requiredCure)
             {
                 gameManager.score++;
+                Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + gameManager.hearts);
+                Debug.Log("Monster Healed");
             }
-            else if (gameManager.score >0 && !gameManager.isGameover)
+            else
             {
-                 gameManager.score--;
-                 gameManager.hearts--;
-
+                playerHealth.TakeDamage();
+                gameManager.hearts--;
+                Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + gameManager.hearts);
             }
+    }
+
         }
 
     }
@@ -131,46 +140,28 @@ public class PlayerInteraction : MonoBehaviour
         if (other.GetComponent<Chest>() == currentChest)
         {
             currentChest = null;
-            Debug.Log("Exit Chest");
+            //Debug.Log("Exit Chest");
         }
 
         else if (other.GetComponent<Basket>() == currentBasket)
         {
             currentBasket = null;
 
-            Debug.Log("Exit Basket");
+            //Debug.Log("Exit Basket");
         }
 
         else if (other.GetComponent<CraftingTable>() == table)
         {
             table = null;
-             Debug.Log("Exit table");
+             //Debug.Log("Exit table");
         }
 
 
         else if ( other.GetComponent<Enemy>() == currentEnemy)
         {
             currentEnemy = null;
-              Debug.Log("Exit enemy");
+              //Debug.Log("Exit enemy");
         }
-
-
-         // if (other.CompareTag("CraftingTable"))
-        // {
-        //     table = null;
-        //     Debug.Log("Exit table");
-        // }
-        // else if (other.CompareTag("Chest"))
-        // {
-        //      currentChest = null;
-        //     Debug.Log("Exit Chest");
-        // }
-        // else if (other.CompareTag("Basket"))
-        // {
-        //      currentBasket = null;
-
-        //      Debug.Log("Exit Basket");
-        // }
 
     }
 
