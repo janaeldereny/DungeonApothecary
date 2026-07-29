@@ -1,5 +1,6 @@
 using UnityEngine;
 using Pathfinding;
+using System.Collections;
 
 public class AstarAI : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class AstarAI : MonoBehaviour
     [SerializeField] private Animator animator;
 
     public Path path;
+
+    public Transform exitPoint;
+    public float detectionRange = 5f;
+    public float losePlayerRange = 10f;
+    public float angryDuration = 1.5f;
+    public float calmingDuration = 2.0f;
+     public MonsterState currentState = MonsterState.Waiting;
 
     public float speed = 2;
     public float nextWaypointDistance = 3;
@@ -27,6 +35,15 @@ public class AstarAI : MonoBehaviour
 
     public float pathUpdateInterval = 0.5f;
 
+    public enum MonsterState
+    {
+        Waiting,
+        Angry,
+        Chasing,
+        Calming,
+        Exiting
+    }
+
     public void Start()
     {
         
@@ -37,7 +54,6 @@ public class AstarAI : MonoBehaviour
         //animator= GetComponent<Animator>();
 
         InvokeRepeating(nameof(UpdatePath), 0f, pathUpdateInterval);
-
    
         //   if (targetPosition == null)
         // {
@@ -51,6 +67,46 @@ public class AstarAI : MonoBehaviour
         //         Debug.LogWarning("Player not found! Make sure the Player GameObject has the 'Player' tag.");
         //     }
         // }
+    }
+
+    //  private void Update()
+    // {
+    //     // Handle state triggers and distance logic
+    //     switch (currentState)
+    //     {
+    //         case MonsterState.Waiting:
+    //             if (targetPosition != null && Vector2.Distance(rb.position, targetPosition.position) <= detectionRange)
+    //             {
+    //                 TransitionToState(MonsterState.Angry);
+    //             }
+    //             break;
+
+    //         case MonsterState.Angry:
+    //             // Handled via AngryRoutine coroutine
+    //             break;
+
+    //         case MonsterState.Chasing:
+    //             if (targetPosition != null && Vector2.Distance(rb.position, targetPosition.position) > losePlayerRange)
+    //             {
+    //                 TransitionToState(MonsterState.Calming);
+    //             }
+    //             break;
+
+    //         case MonsterState.Calming:
+    //             // Handled via CalmingRoutine coroutine
+    //             break;
+
+    //         case MonsterState.Exiting:
+    //             if (exitPoint != null && Vector2.Distance(rb.position, exitPoint.position) < 0.5f)
+    //             {
+    //                 Destroy(gameObject);
+    //             }
+    //             break;
+    //     }
+    // }
+
+    void Update()
+    {
     }
 
     void UpdatePath()
@@ -143,4 +199,68 @@ public class AstarAI : MonoBehaviour
         }
     }
 
+    //  public void TransitionToState(MonsterState newState)
+    // {
+    //     currentState = newState;
+
+    //     switch (newState)
+    //     {
+    //         case MonsterState.Angry:
+    //             StartCoroutine(AngryRoutine());
+    //             break;
+
+    //         case MonsterState.Calming:
+    //             StartCoroutine(CalmingRoutine());
+    //             break;
+    //     }
+    // }
+
+    // private IEnumerator AngryRoutine()
+    // {
+    //     path = null; // Reset path during anger pause
+    //     if (animator != null) animator.SetTrigger("isAngry"); // Triggers optional roar animation
+
+    //     yield return new WaitForSeconds(angryDuration);
+
+    //     TransitionToState(MonsterState.Chasing);
+    // }
+
+    // private IEnumerator CalmingRoutine()
+    // {
+    //     path = null; // Reset path during calm pause
+    //     if (animator != null) animator.SetTrigger("isCalming"); // Triggers optional calming animation
+
+    //     yield return new WaitForSeconds(calmingDuration);
+
+    //     TransitionToState(MonsterState.Exiting);
+    // }
+
+
+    //     public void CureMonster(Transform doorTransform = null)
+    // {
+    
+
+    //     // Stop any ongoing Angry or Calming coroutines immediately
+    //     StopAllCoroutines();
+
+    //     // Transition directly to Exiting
+    //     TransitionToState(MonsterState.Exiting);
+    // }
+
 }
+
+
+
+
+
+
+
+
+
+
+   
+
+    
+
+   
+   
