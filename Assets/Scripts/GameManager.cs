@@ -5,7 +5,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-
+    public static GameManager Instance;
     public bool isGameover;
     public int score;
     public int bestScore;
@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
 
     public int hearts=3;
     [SerializeField] private UIhandler uiHandler;
+    [SerializeField] public GameObject gameOverPanel;
 
-    public static GameManager Instance;
+    
 
     private void Awake()
 
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         hearts--;
         uiHandler.UpdateHearts();
-        if (hearts <= 0)
+        if (hearts < 0)
         {
             Debug.Log ("Game Over");
             isGameover=true;
@@ -83,10 +84,11 @@ public class GameManager : MonoBehaviour
     {
 
         Debug.Log("Game Over");
+        gameOverPanel.SetActive(true);
 
         // uiHandler.ShowGameOver();
 
-        // Time.timeScale = 0f;
+        Time.timeScale = 0f;
 
     }
 

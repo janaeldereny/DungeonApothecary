@@ -12,10 +12,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform DoorC;
      [SerializeField] public bool exiting;
      [SerializeField] private SpriteRenderer spriteRenderer;
+     [SerializeField] private GameObject floatingIcon;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        floatingIcon.SetActive(true);
     }
 
     void Awake()
@@ -42,6 +44,7 @@ public class Enemy : MonoBehaviour
     public void EnemyExits()
     {
         exiting = true;
+        floatingIcon.SetActive(false);
         spriteRenderer.color = Color.white;
         aIDestinationSetter.target = DoorC;
         Debug.Log("Enemy Exits");

@@ -7,6 +7,7 @@ public class UIhandler : MonoBehaviour
     [SerializeField] private Animator[] heartAnimators;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TMP_Text bestScoreText;
+    [SerializeField] private PauseMenu pauseMenu;
     //[SerializeField] private TextMeshProUGUI bestScore;
 
 
@@ -17,8 +18,11 @@ public class UIhandler : MonoBehaviour
     {
         Debug.Log("UI lost heart");
         currentHearts--;
-
+        if (currentHearts >= 0)
+        {
+            
         heartAnimators[currentHearts].SetTrigger("LoseHeart");
+        }
     }
 
     public void UpdateScore(int Score)
@@ -38,5 +42,15 @@ public class UIhandler : MonoBehaviour
     public void HideHeart()
     {
         gameObject.SetActive(false);
+    }
+
+     public void PauseGame()
+
+    {
+        pauseMenu.pausePanel.SetActive(true);
+
+        Time.timeScale = 0f;
+
+        pauseMenu.isPaused = true;
     }
 }

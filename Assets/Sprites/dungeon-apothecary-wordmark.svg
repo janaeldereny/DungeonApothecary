@@ -1,0 +1,34 @@
+<svg width="900" height="260" viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dungeonFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c9a876"/>
+      <stop offset="45%" stop-color="#8a6339"/>
+      <stop offset="100%" stop-color="#4a3018"/>
+    </linearGradient>
+
+    <linearGradient id="apothecaryFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d9aef0"/>
+      <stop offset="45%" stop-color="#9b4fc7"/>
+      <stop offset="100%" stop-color="#4a1f66"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0d070f" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="260" fill="#160b1e"/>
+
+  <g filter="url(#softShadow)" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">
+    <text x="450" y="115" font-size="88" font-weight="700" letter-spacing="6"
+          fill="url(#dungeonFill)" stroke="#2a1608" stroke-width="1.5">DUNGEON</text>
+
+    <text x="450" y="205" font-size="70" font-weight="700" letter-spacing="8"
+          fill="url(#apothecaryFill)" stroke="#2a1240" stroke-width="1.5">APOTHECARY</text>
+  </g>
+
+  <!-- thin dividing rule with center diamond -->
+  <line x1="150" y1="140" x2="410" y2="140" stroke="#6b4423" stroke-width="2"/>
+  <line x1="490" y1="140" x2="750" y2="140" stroke="#6b4423" stroke-width="2"/>
+  <rect x="443" y="133" width="14" height="14" fill="#9b4fc7" stroke="#4a3018" stroke-width="1.5" transform="rotate(45 450 140)"/>
+</svg>

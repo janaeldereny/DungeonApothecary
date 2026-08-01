@@ -416,6 +416,7 @@ MonoBehaviour:
   DoorC: {fileID: 0}
   exiting: 0
   spriteRenderer: {fileID: 3985214057902852280}
+  floatingIcon: {fileID: 5457543110805956013}
 --- !u!114 &211988431269958326
 MonoBehaviour:
   m_ObjectHideFlags: 0

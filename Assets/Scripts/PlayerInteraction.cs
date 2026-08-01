@@ -122,7 +122,7 @@ public class PlayerInteraction : MonoBehaviour
                 gameManager.score++;
                 uIhandler.UpdateScore(gameManager.score);
 
-                Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + gameManager.hearts);
+                Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + GameManager.Instance.hearts);
                 Debug.Log("Monster Healed");
                 currentEnemy.EnemyExits();
                 inventory.items[0] = null;
@@ -131,11 +131,14 @@ public class PlayerInteraction : MonoBehaviour
             else if (!currentEnemy.exiting)
             {
                 playerHealth.TakeDamage();
-                gameManager.hearts--;
+                // gameManager.hearts--;
                 uIhandler.UpdateScore(gameManager.score);
+                GameManager.Instance.LoseHeart();
 
-                 uIhandler.UpdateHearts();
-                Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + gameManager.hearts);
+                //  uIhandler.UpdateHearts();
+                Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + GameManager.Instance.hearts);
+
+                
             }
     }
 

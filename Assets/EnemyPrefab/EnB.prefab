@@ -333,6 +333,7 @@ MonoBehaviour:
   DoorC: {fileID: 0}
   exiting: 0
   spriteRenderer: {fileID: 0}
+  floatingIcon: {fileID: 0}
 --- !u!1 &6281157330342998961
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +572,7 @@ MonoBehaviour:
   DoorC: {fileID: 0}
   exiting: 0
   spriteRenderer: {fileID: 1254979217683227060}
+  floatingIcon: {fileID: 6281157330342998961}
 --- !u!114 &3463744083991477727
 MonoBehaviour:
   m_ObjectHideFlags: 0
