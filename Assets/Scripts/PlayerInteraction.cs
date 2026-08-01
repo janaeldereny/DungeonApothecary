@@ -37,6 +37,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (currentChest != null)
         {
+             currentChest.OpeningAnim();
             
             if (inventory.AddItem(currentChest.item))
             {
