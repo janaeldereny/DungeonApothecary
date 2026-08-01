@@ -330,6 +330,9 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 32363e26825b34d7ea20261c6af5a2e0, type: 2}
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
+  DoorC: {fileID: 0}
+  exiting: 0
+  spriteRenderer: {fileID: 0}
 --- !u!1 &6281157330342998961
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,13 +528,14 @@ GameObject:
   - component: {fileID: 6240419246588662724}
   - component: {fileID: 2578160695193341396}
   - component: {fileID: 882224561168304284}
+  - component: {fileID: 476113928002298896}
   m_Layer: 0
   m_Name: EnB
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1489265258904648178
 Transform:
   m_ObjectHideFlags: 0
@@ -564,6 +568,9 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 32363e26825b34d7ea20261c6af5a2e0, type: 2}
   aIDestinationSetter: {fileID: 2578160695193341396}
   aipath: {fileID: 0}
+  DoorC: {fileID: 0}
+  exiting: 0
+  spriteRenderer: {fileID: 1254979217683227060}
 --- !u!114 &3463744083991477727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,7 +642,7 @@ MonoBehaviour:
   radius: 0.5
   height: 0.1
   canMove: 1
-  maxSpeed: 2
+  maxSpeed: 0.5
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -711,6 +718,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.3
+--- !u!114 &476113928002298896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383998509741314711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e2566d347654758ad20055e5329395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimation
+  animator: {fileID: 6692282990641015880}
 --- !u!1 &7853414751623192425
 GameObject:
   m_ObjectHideFlags: 0

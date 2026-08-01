@@ -373,13 +373,14 @@ GameObject:
   - component: {fileID: 7007622588156718746}
   - component: {fileID: -8945638703160448894}
   - component: {fileID: 7829273459418086326}
+  - component: {fileID: 8813502825459456131}
   m_Layer: 0
   m_Name: EnA
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3872808294127401072
 Transform:
   m_ObjectHideFlags: 0
@@ -412,6 +413,9 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 0a5c31aec076647e9b970628aaf87818, type: 2}
   aIDestinationSetter: {fileID: -8945638703160448894}
   aipath: {fileID: 0}
+  DoorC: {fileID: 0}
+  exiting: 0
+  spriteRenderer: {fileID: 3985214057902852280}
 --- !u!114 &211988431269958326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,7 +487,7 @@ MonoBehaviour:
   radius: 0.5
   height: 0.1
   canMove: 1
-  maxSpeed: 2
+  maxSpeed: 0.5
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -559,6 +563,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.3
+--- !u!114 &8813502825459456131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6785537057229644719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e2566d347654758ad20055e5329395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimation
+  animator: {fileID: 5101717896631341524}
 --- !u!1 &8488300712304740250
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private CraftManager craftManager;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayerHealth playerHealth;
+     [SerializeField] private UIhandler uIhandler;
 
     //[SerializeField] public EnemySO enemyData;
 
@@ -118,13 +119,21 @@ public class PlayerInteraction : MonoBehaviour
             if (heldCure == enemy.enemyData.requiredCure)
             {
                 gameManager.score++;
+                uIhandler.UpdateScore(gameManager.score);
+
                 Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + gameManager.hearts);
                 Debug.Log("Monster Healed");
+                currentEnemy.EnemyExits();
+                inventory.items[0] = null;
+                inventoryUi.Refresh();
             }
-            else
+            else if (!currentEnemy.exiting)
             {
                 playerHealth.TakeDamage();
                 gameManager.hearts--;
+                uIhandler.UpdateScore(gameManager.score);
+
+                 uIhandler.UpdateHearts();
                 Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + gameManager.hearts);
             }
     }

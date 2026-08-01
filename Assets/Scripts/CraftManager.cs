@@ -25,7 +25,7 @@ public class CraftManager : MonoBehaviour
             matchedRecipe = recipe;
              inventory.ConsumeAndCraft(matchedRecipe.resultCure);
              break;  
-                
+            
             }
             
         }
