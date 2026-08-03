@@ -131,11 +131,11 @@ public class PlayerInteraction : MonoBehaviour
             else if (!currentEnemy.exiting)
             {
                 playerHealth.TakeDamage();
-                // gameManager.hearts--;
+                
                 uIhandler.UpdateScore(gameManager.score);
                 GameManager.Instance.LoseHeart();
 
-                //  uIhandler.UpdateHearts();
+                
                 Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + GameManager.Instance.hearts);
 
                 

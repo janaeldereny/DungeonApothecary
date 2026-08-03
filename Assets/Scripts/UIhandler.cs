@@ -31,13 +31,13 @@ public class UIhandler : MonoBehaviour
     }
 
 
-    public void UpdateBestScore(int bestScore)
+    // public void UpdateBestScore(int bestScore)
 
-    {
+    // {
 
-        bestScoreText.text = bestScore.ToString();
+    //     bestScoreText.text = bestScore.ToString();
 
-    }
+    // }
 
     public void HideHeart()
     {

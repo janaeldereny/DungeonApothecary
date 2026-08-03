@@ -11,14 +11,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AIPath aipath;
     [SerializeField] private Transform DoorC;
      [SerializeField] public bool exiting;
+
+     public EnemyStates currentState;
+     private float patienceTimer;
+
+
      [SerializeField] private SpriteRenderer spriteRenderer;
      [SerializeField] private GameObject floatingIcon;
+     [SerializeField] private EnemySpawner spawner;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        floatingIcon.SetActive(true);
-    }
+
+        void Start()
+        {
+            floatingIcon.SetActive(true);
+            currentState = EnemyStates.Waiting; 
+        }
 
     void Awake()
     {
@@ -29,16 +36,44 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!exiting)
-        {
-         aIDestinationSetter.target = player;
-        }
+        switch (currentState)
+    {
+        case EnemyStates.Waiting:
+            
+            patienceTimer -= Time.deltaTime;
+            if (patienceTimer <= 0f)
+            {
+                EnterChasing(); 
+            }
+            break;
 
-         if (exiting &&
-            Vector2.Distance(transform.position, DoorC.position) < 0.2f)
-        {
-            Destroy(gameObject);
-        }
+        case EnemyStates.Chasing:
+            aIDestinationSetter.target = player;
+            break;
+
+        case EnemyStates.Exiting:
+    
+            if (Vector2.Distance(transform.position, DoorC.position) < 0.2f)
+            {
+                Destroy(gameObject);
+            }
+            break;
+    }
+        // if (!exiting)
+        // {
+        //  aIDestinationSetter.target = player;
+        // }
+
+        //  if (exiting &&
+        //     Vector2.Distance(transform.position, DoorC.position) < 0.2f)
+        // {
+        //     Destroy(gameObject);
+        // }
+    }
+
+    private void EnterChasing()
+    {
+        currentState = EnemyStates.Chasing;
     }
 
     public void EnemyExits()
@@ -48,6 +83,21 @@ public class Enemy : MonoBehaviour
         spriteRenderer.color = Color.white;
         aIDestinationSetter.target = DoorC;
         Debug.Log("Enemy Exits");
+    
+        if(spawner != null)
+        {
+            spawner.RegisterMonsterHealed();
+        }
+    }
+
+    public void SetSpawner(EnemySpawner spawnerREF)
+    {
+        spawner = spawnerREF;
+    }
+
+    public void SetPatienceTimer(float timer)
+    {
+        patienceTimer = timer;
     }
 
 

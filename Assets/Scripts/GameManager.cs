@@ -16,34 +16,34 @@ public class GameManager : MonoBehaviour
     public int hearts=3;
     [SerializeField] private UIhandler uiHandler;
     [SerializeField] public GameObject gameOverPanel;
+    [SerializeField] private GameOverScreen gameOverScreen;
 
     
 
     private void Awake()
 
     {
-
+        savePath = Path.Combine(Application.persistentDataPath, "save.json");
         if (Instance == null)
-
+        {
             Instance = this;
-
+             LoadGame();   
+        }
         else
         {
             Destroy(gameObject);
             return;
         }
-        savePath = Path.Combine(Application.persistentDataPath, "save.json");
-
-        LoadGame();
+        // LoadGame();
     }
 
    private void Start()
-{
-    score =0;
-    uiHandler.UpdateScore(score);
-    uiHandler.UpdateBestScore(bestScore);
-    uiHandler.UpdateHearts();
-}
+    {
+        score =0;
+        uiHandler.UpdateScore(score);
+        //uiHandler.UpdateBestScore(bestScore);
+        
+    }
 
     public void AddScore(int amount = 1)
 
@@ -51,17 +51,17 @@ public class GameManager : MonoBehaviour
         score += amount;
         uiHandler.UpdateScore(score);
 
-        if (score > bestScore)
+        // if (score > bestScore)
 
-        {
+        // {
 
-            bestScore = score;
+        //     bestScore = score;
 
-            uiHandler.UpdateBestScore(bestScore);
+        //     uiHandler.UpdateBestScore(bestScore);
 
-            SaveGame();
+        //     SaveGame();
 
-        }
+        // }
 
     }
 
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         hearts--;
         uiHandler.UpdateHearts();
-        if (hearts < 0)
+        if (hearts <= 0)
         {
             Debug.Log ("Game Over");
             isGameover=true;
@@ -84,6 +84,15 @@ public class GameManager : MonoBehaviour
     {
 
         Debug.Log("Game Over");
+        if (score > bestScore)
+
+        {
+            bestScore = score;
+            SaveGame();
+        }
+
+        gameOverScreen.Score(score);
+        gameOverScreen.Best(bestScore);
         gameOverPanel.SetActive(true);
 
         // uiHandler.ShowGameOver();
@@ -109,27 +118,16 @@ public class GameManager : MonoBehaviour
     private void LoadGame()
 
     {
-
         if (File.Exists(savePath))
-
         {
-
             string json = File.ReadAllText(savePath);
-
             SaveData data = JsonUtility.FromJson<SaveData>(json);
-
             bestScore = data.bestScore;
-
         }
-
         else
-
         {
-
             bestScore = 0;
-
         }
-
     }
 
 }

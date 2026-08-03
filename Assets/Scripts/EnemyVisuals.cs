@@ -1,41 +1,44 @@
 using UnityEngine;
+using Pathfinding;
 
 public class MonsterVisuals : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private GameObject angryIcon;
-    [SerializeField] private GameObject calmingIcon;
+    private AIPath aiPath;
 
-    public void UpdateStateVisuals(AstarAI.MonsterState state)
+    private Animator animator;
+
+    private SpriteRenderer spriteRenderer;
+
+    private void Awake()
+
     {
-        // Hide icons by default
-        if (angryIcon) angryIcon.SetActive(false);
-        if (calmingIcon) calmingIcon.SetActive(false);
 
-        switch (state)
-        {
-            case AstarAI.MonsterState.Waiting:
-                if (spriteRenderer) spriteRenderer.color = Color.white;
-                break;
+        aiPath = GetComponent<AIPath>();
 
-            case AstarAI.MonsterState.Angry:
-                if (spriteRenderer) spriteRenderer.color = Color.red;
-                if (angryIcon) angryIcon.SetActive(true);
-                break;
+        animator = GetComponentInChildren<Animator>();
 
-            case AstarAI.MonsterState.Chasing:
-                if (spriteRenderer) spriteRenderer.color = new Color(1f, 0.5f, 0f); // Orange
-                break;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-            case AstarAI.MonsterState.Calming:
-                if (spriteRenderer) spriteRenderer.color = Color.blue;
-                if (calmingIcon) calmingIcon.SetActive(true);
-                break;
-
-            case AstarAI.MonsterState.Exiting:
-                if (spriteRenderer) spriteRenderer.color = Color.green;
-                break;
-        }
     }
+
+    private void Update()
+
+    {
+
+        float speed = aiPath.velocity.magnitude;
+
+        animator.SetFloat("Speed", speed);
+
+        if (aiPath.velocity.x > 0.05f)
+
+            spriteRenderer.flipX = false;
+
+        else if (aiPath.velocity.x < -0.05f)
+
+            spriteRenderer.flipX = true;
+
+    }
+
+
 }
 
