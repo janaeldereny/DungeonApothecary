@@ -128,9 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ca92a058ea844eaa4c9def8694bf1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterVisuals
-  spriteRenderer: {fileID: 0}
-  angryIcon: {fileID: 0}
-  calmingIcon: {fileID: 0}
 --- !u!1 &1190403064534142621
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,8 +412,11 @@ MonoBehaviour:
   aipath: {fileID: 0}
   DoorC: {fileID: 0}
   exiting: 0
+  calmingDuration: 2
+  currentState: 0
   spriteRenderer: {fileID: 3985214057902852280}
   floatingIcon: {fileID: 5457543110805956013}
+  spawner: {fileID: 0}
 --- !u!114 &211988431269958326
 MonoBehaviour:
   m_ObjectHideFlags: 0

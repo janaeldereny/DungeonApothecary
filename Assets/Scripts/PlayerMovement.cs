@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float moveSpeed = 2.7f;
+    [SerializeField] private float moveSpeed = 3.5f;
     Vector2 moveInput;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
@@ -19,8 +19,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleMovement();
-        //flipSprite();
-
         //  transform.position += (Vector3)moveInput * moveSpeed * Time.deltaTime;
     }
 

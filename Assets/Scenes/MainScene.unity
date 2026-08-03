@@ -1853,6 +1853,7 @@ MonoBehaviour:
   gameManager: {fileID: 108947707}
   playerHealth: {fileID: 305742509}
   uIhandler: {fileID: 616339506}
+  currentState: 0
 --- !u!61 &305742512
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1938,6 +1939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3551c07fc9489410381a5002cd39b649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  moveSpeed: 3.5
 --- !u!212 &305742515
 SpriteRenderer:
   serializedVersion: 3
@@ -2088,11 +2090,6 @@ RectTransform:
   m_AnchoredPosition: {x: 15.8, y: -205.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &351919488 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4907547973405573494, guid: b1b154ce782974ecda3e6facbecbcacf, type: 3}
-  m_PrefabInstance: {fileID: 5443136693010976456}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &351919495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7869342789596295410, guid: b1b154ce782974ecda3e6facbecbcacf, type: 3}
@@ -5226,6 +5223,11 @@ MonoBehaviour:
   aipath: {fileID: 0}
   DoorC: {fileID: 0}
   exiting: 0
+  calmingDuration: 2
+  enemyExitingSpeed: 5
+  enemyChasingSpeed: 3
+  patienceTimer: 0
+  currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
   spawner: {fileID: 0}
@@ -5905,6 +5907,11 @@ MonoBehaviour:
   aipath: {fileID: 0}
   DoorC: {fileID: 0}
   exiting: 0
+  calmingDuration: 2
+  enemyExitingSpeed: 5
+  enemyChasingSpeed: 3
+  patienceTimer: 0
+  currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
   spawner: {fileID: 0}
@@ -6514,11 +6521,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &995976313 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7383998509741314711, guid: 522baeac26a6741c382b634269eb1595, type: 3}
-  m_PrefabInstance: {fileID: 1367022888924279194}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &995976320 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1489265258904648178, guid: 522baeac26a6741c382b634269eb1595, type: 3}
@@ -6581,9 +6583,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefabs:
-  - {fileID: 2126185291}
-  - {fileID: 995976313}
-  - {fileID: 351919488}
+  - {fileID: 6785537057229644719, guid: ae649bb5fb5314c40848536816bbbc2b, type: 3}
+  - {fileID: 7383998509741314711, guid: 522baeac26a6741c382b634269eb1595, type: 3}
+  - {fileID: 4907547973405573494, guid: b1b154ce782974ecda3e6facbecbcacf, type: 3}
   doorA: {fileID: 156068368}
   doorB: {fileID: 961752990}
   patienceTimerStart: 20
@@ -7598,6 +7600,11 @@ MonoBehaviour:
   aipath: {fileID: 0}
   DoorC: {fileID: 0}
   exiting: 0
+  calmingDuration: 2
+  enemyExitingSpeed: 5
+  enemyChasingSpeed: 3
+  patienceTimer: 0
+  currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
   spawner: {fileID: 0}
@@ -10809,11 +10816,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &2126185291 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6785537057229644719, guid: ae649bb5fb5314c40848536816bbbc2b, type: 3}
-  m_PrefabInstance: {fileID: 4198382637234655023}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2126185307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3872808294127401072, guid: ae649bb5fb5314c40848536816bbbc2b, type: 3}
@@ -11208,13 +11210,13 @@ PrefabInstance:
       propertyPath: DoorC
       value: 
       objectReference: {fileID: 2045534057}
+    - target: {fileID: 6348890983473216321, guid: ae649bb5fb5314c40848536816bbbc2b, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1172062639}
     - target: {fileID: 6785537057229644719, guid: ae649bb5fb5314c40848536816bbbc2b, type: 3}
       propertyPath: m_Name
       value: EnA
-      objectReference: {fileID: 0}
-    - target: {fileID: 6785537057229644719, guid: ae649bb5fb5314c40848536816bbbc2b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

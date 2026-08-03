@@ -33,7 +33,7 @@ RectTransform:
   m_Father: {fileID: 2305958046795299808}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -108,7 +108,7 @@ RectTransform:
   m_Father: {fileID: 5184793009697143819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -482,8 +482,14 @@ MonoBehaviour:
   aipath: {fileID: 0}
   DoorC: {fileID: 0}
   exiting: 0
+  calmingDuration: 1
+  enemyExitingSpeed: 5
+  enemyChasingSpeed: 1.5
+  patienceTimer: 4
+  currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
+  spawner: {fileID: 0}
 --- !u!1 &2292796357663069194
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7042739472086479952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -846,8 +852,14 @@ MonoBehaviour:
   aipath: {fileID: 0}
   DoorC: {fileID: 0}
   exiting: 0
+  calmingDuration: 1
+  enemyExitingSpeed: 5
+  enemyChasingSpeed: 1.5
+  patienceTimer: 4
+  currentState: 0
   spriteRenderer: {fileID: 2633082720164290352}
   floatingIcon: {fileID: 6919545381889124915}
+  spawner: {fileID: 0}
 --- !u!114 &4802922973804118769
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayerHealth playerHealth;
      [SerializeField] private UIhandler uIhandler;
+     [SerializeField] private EnemyStates currentState;
 
     //[SerializeField] public EnemySO enemyData;
 
@@ -114,21 +115,26 @@ public class PlayerInteraction : MonoBehaviour
         {
             currentEnemy = enemy;
             Debug.Log("Touched an enemy");
-{
+    {
         ItemScriptableObject heldCure = inventory.items[0];
 
-            if (heldCure == enemy.enemyData.requiredCure)
+            
+             if (currentEnemy.currentState == EnemyStates.Exiting || currentEnemy.currentState == EnemyStates.Calming)
+            {
+                Debug.Log("Enemy is exiting or calming, no damage taken.");
+            }
+            else if (heldCure == enemy.enemyData.requiredCure)
             {
                 gameManager.score++;
                 uIhandler.UpdateScore(gameManager.score);
 
                 Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + GameManager.Instance.hearts);
                 Debug.Log("Monster Healed");
-                currentEnemy.EnemyExits();
+                currentEnemy.EnterCalming();
                 inventory.items[0] = null;
                 inventoryUi.Refresh();
             }
-            else if (!currentEnemy.exiting)
+            else
             {
                 playerHealth.TakeDamage();
                 

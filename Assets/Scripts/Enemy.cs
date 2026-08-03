@@ -2,6 +2,7 @@ using System;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.Animations;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,9 +12,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AIPath aipath;
     [SerializeField] private Transform DoorC;
      [SerializeField] public bool exiting;
+     [SerializeField] private float calmingDuration = 1f;
+     [SerializeField] private float enemyExitingSpeed = 5f;
+     [SerializeField] private float enemyChasingSpeed = 1.5f;
+     [SerializeField] private float patienceTimer = 4f;
 
      public EnemyStates currentState;
-     private float patienceTimer;
 
 
      [SerializeField] private SpriteRenderer spriteRenderer;
@@ -25,6 +29,9 @@ public class Enemy : MonoBehaviour
         {
             floatingIcon.SetActive(true);
             currentState = EnemyStates.Waiting; 
+
+            spawner = GetComponentInParent<EnemySpawner>();
+            aipath = GetComponent<AIPath>();
         }
 
     void Awake()
@@ -49,6 +56,8 @@ public class Enemy : MonoBehaviour
 
         case EnemyStates.Chasing:
             aIDestinationSetter.target = player;
+            // EnterCalming();
+
             break;
 
         case EnemyStates.Exiting:
@@ -59,28 +68,21 @@ public class Enemy : MonoBehaviour
             }
             break;
     }
-        // if (!exiting)
-        // {
-        //  aIDestinationSetter.target = player;
-        // }
-
-        //  if (exiting &&
-        //     Vector2.Distance(transform.position, DoorC.position) < 0.2f)
-        // {
-        //     Destroy(gameObject);
-        // }
+        
     }
 
     private void EnterChasing()
     {
         currentState = EnemyStates.Chasing;
+         aipath.maxSpeed = enemyChasingSpeed; 
     }
 
     public void EnemyExits()
     {
+        currentState = EnemyStates.Exiting;
         exiting = true;
-        floatingIcon.SetActive(false);
-        spriteRenderer.color = Color.white;
+        //floatingIcon.SetActive(false);
+        //spriteRenderer.color = Color.white;
         aIDestinationSetter.target = DoorC;
         Debug.Log("Enemy Exits");
     
@@ -88,7 +90,25 @@ public class Enemy : MonoBehaviour
         {
             spawner.RegisterMonsterHealed();
         }
+        aipath.maxSpeed = enemyExitingSpeed; 
     }
+
+    public void EnterCalming()
+{
+    currentState = EnemyStates.Calming;
+    floatingIcon.SetActive(false);
+    spriteRenderer.color = Color.white;
+    aipath.canMove = false;
+
+    StartCoroutine(CalmingRoutine());
+}
+
+private IEnumerator CalmingRoutine()
+{
+    yield return new WaitForSeconds(calmingDuration);
+    aipath.canMove = true;
+    EnemyExits(); 
+}
 
     public void SetSpawner(EnemySpawner spawnerREF)
     {
