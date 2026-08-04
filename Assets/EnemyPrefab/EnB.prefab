@@ -91,6 +91,8 @@ GameObject:
   - component: {fileID: 488457540545974955}
   - component: {fileID: 6692282990641015880}
   - component: {fileID: 413453700702905381}
+  - component: {fileID: 7318814249889581384}
+  - component: {fileID: 6623242746321660711}
   m_Layer: 0
   m_Name: EnemyB
   m_TagString: Untagged
@@ -332,8 +334,148 @@ MonoBehaviour:
   aipath: {fileID: 0}
   DoorC: {fileID: 0}
   exiting: 0
+  calmingDuration: 1
+  enemyExitingSpeed: 5
+  enemyChasingSpeed: 1.5
+  patienceTimer: 4
+  currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
+  spawner: {fileID: 0}
+--- !u!114 &7318814249889581384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881627797201732513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdaae3729077e4388bf4e7fe27b8baf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootStepSound
+  audioSource: {fileID: 6623242746321660711}
+  footstepSounds:
+  - {fileID: 8300000, guid: a00acdb9580da454fb48ef356bc2eca4, type: 3}
+  - {fileID: 8300000, guid: c2d88083e8f7b4ecc919029ad9af32c7, type: 3}
+  - {fileID: 8300000, guid: a4550a127ef9f421cbf14aebab245079, type: 3}
+  - {fileID: 8300000, guid: e1df1d46cd3384e14b409d76a96c0e68, type: 3}
+  - {fileID: 8300000, guid: af1743b991af44dd6a97f164af302d8a, type: 3}
+  - {fileID: 8300000, guid: 12569aec534624015aa88c36cd4fbf3c, type: 3}
+  - {fileID: 8300000, guid: 8193f2ce63fa74dfab37f36c850ddc99, type: 3}
+  - {fileID: 8300000, guid: 1bba5f25864f24c9cb708368eb804a88, type: 3}
+  - {fileID: 8300000, guid: 26651f0dc437546308e528f356f50fe8, type: 3}
+  - {fileID: 8300000, guid: 4cd795781b339404ba2b457adf3a125b, type: 3}
+  - {fileID: 8300000, guid: 1e685092094474f0d9f5193aa3dcf43d, type: 3}
+  - {fileID: 8300000, guid: 9b9b263d24b454139a4cca72713bdfc8, type: 3}
+  - {fileID: 8300000, guid: 1de0c2839b6314ee3be23ea6a34fa978, type: 3}
+  - {fileID: 8300000, guid: 08e28519485fc4ab3bc11030dc4a5184, type: 3}
+  - {fileID: 8300000, guid: 76e1620de555a47a89f26ea2733f247f, type: 3}
+  - {fileID: 8300000, guid: 5f800f6abede74cdc95ee3ca8dd5d1d5, type: 3}
+  - {fileID: 8300000, guid: 0ef8b1a9b74324c14831220145a1fc9e, type: 3}
+  - {fileID: 8300000, guid: d92c88ae62cea4e6ca33e7878d5986ec, type: 3}
+  - {fileID: 8300000, guid: ae4c3cc39f8994d4bb6ba097daccfa5e, type: 3}
+  - {fileID: 8300000, guid: 37abbbf0cd70549e6814210d48e239e2, type: 3}
+  - {fileID: 8300000, guid: 2f3ba4a7ffc2b4f66a237d98c25d7f06, type: 3}
+  footstepInterval: 0.5
+  isPlayingFootstepSound: 0
+--- !u!82 &6623242746321660711
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881627797201732513}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.05
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6281157330342998961
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,8 +713,14 @@ MonoBehaviour:
   aipath: {fileID: 0}
   DoorC: {fileID: 0}
   exiting: 0
+  calmingDuration: 1
+  enemyExitingSpeed: 5
+  enemyChasingSpeed: 1.5
+  patienceTimer: 4
+  currentState: 0
   spriteRenderer: {fileID: 1254979217683227060}
   floatingIcon: {fileID: 6281157330342998961}
+  spawner: {fileID: 0}
 --- !u!114 &3463744083991477727
 MonoBehaviour:
   m_ObjectHideFlags: 0

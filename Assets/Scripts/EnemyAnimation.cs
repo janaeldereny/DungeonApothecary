@@ -7,6 +7,7 @@ public class EnemyAnimation : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+
     private void Awake()
 
     {
@@ -39,5 +40,7 @@ public class EnemyAnimation : MonoBehaviour
         }
 
     }
+    
+
 
 }

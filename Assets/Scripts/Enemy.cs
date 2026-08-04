@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private Transform player;
     [SerializeField]private AIDestinationSetter aIDestinationSetter;
     [SerializeField] private AIPath aipath;
-    [SerializeField] private Transform DoorC;
+    [SerializeField] private Transform doorC;
      [SerializeField] public bool exiting;
      [SerializeField] private float calmingDuration = 1f;
      [SerializeField] private float enemyExitingSpeed = 5f;
@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        doorC = GameObject.FindGameObjectWithTag("DoorC").transform;
 
     }
 
@@ -62,7 +63,7 @@ public class Enemy : MonoBehaviour
 
         case EnemyStates.Exiting:
     
-            if (Vector2.Distance(transform.position, DoorC.position) < 0.2f)
+            if (Vector2.Distance(transform.position, doorC.position) < 0.2f)
             {
                 Destroy(gameObject);
             }
@@ -83,7 +84,7 @@ public class Enemy : MonoBehaviour
         exiting = true;
         //floatingIcon.SetActive(false);
         //spriteRenderer.color = Color.white;
-        aIDestinationSetter.target = DoorC;
+        aIDestinationSetter.target = doorC;
         Debug.Log("Enemy Exits");
     
         if(spawner != null)

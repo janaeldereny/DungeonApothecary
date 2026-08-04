@@ -16,6 +16,17 @@ public class PlayerInteraction : MonoBehaviour
      [SerializeField] private UIhandler uIhandler;
      [SerializeField] private EnemyStates currentState;
 
+
+     public AudioSource audioSource;
+    public AudioClip pickupSound;
+    public AudioClip inventoryFullSound;
+    public AudioClip craftingSound;
+    public AudioClip dropSound;
+    public AudioClip touchedEnemySound;
+    public AudioClip correctCureSound;
+
+
+
     //[SerializeField] public EnemySO enemyData;
 
 
@@ -38,10 +49,11 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (currentChest != null)
         {
-             currentChest.OpeningAnim();
+             
             
             if (inventory.AddItem(currentChest.item))
             {
+                currentChest.OpeningAnim();
                 inventoryUi.Refresh(); 
                 ItemScriptableObject added = currentChest.item;
                 currentChest.item = null;
@@ -49,11 +61,16 @@ public class PlayerInteraction : MonoBehaviour
 
                 Debug.Log (added + " item added");
 
+                audioSource.PlayOneShot(pickupSound);
+
             }
         
             else
             {
                 Debug.Log ("inventory is full");
+
+                audioSource.PlayOneShot(inventoryFullSound);
+
                 //isFull = true;
             }
             
@@ -62,6 +79,8 @@ public class PlayerInteraction : MonoBehaviour
         else if (table != null)
         {
                craftManager.startCrafting();
+
+               audioSource.PlayOneShot(craftingSound);
         }
     }
 
@@ -71,6 +90,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             ItemScriptableObject droppedItem = inventory.DropItem();
             inventoryUi.Refresh(); 
+
+            audioSource.PlayOneShot(dropSound);
 
             Debug.Log(droppedItem + " item dropped");
             //isFull = false;
@@ -115,6 +136,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             currentEnemy = enemy;
             Debug.Log("Touched an enemy");
+
+            
     {
         ItemScriptableObject heldCure = inventory.items[0];
 
@@ -128,6 +151,8 @@ public class PlayerInteraction : MonoBehaviour
                 gameManager.score++;
                 uIhandler.UpdateScore(gameManager.score);
 
+
+                audioSource.PlayOneShot(correctCureSound);
                 Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + GameManager.Instance.hearts);
                 Debug.Log("Monster Healed");
                 currentEnemy.EnterCalming();
@@ -138,6 +163,8 @@ public class PlayerInteraction : MonoBehaviour
             {
                 playerHealth.TakeDamage();
                 
+                audioSource.PlayOneShot(touchedEnemySound);
+
                 uIhandler.UpdateScore(gameManager.score);
                 GameManager.Instance.LoseHeart();
 

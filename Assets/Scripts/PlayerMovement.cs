@@ -7,6 +7,12 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private Animator animator;
+
+    public AudioSource audioSource;
+    public AudioClip[] footstepSounds ;
+    [SerializeField] private float footstepInterval = 0.5f;
+    [SerializeField] private bool isPlayingFootstepSound = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         {
              animator.SetFloat("InputX" , moveInput.x );
             animator.SetFloat("InputY" , moveInput.y );
-            //animator.SetBool("isWalking" , false);
+            
             animator.SetFloat("LastInputX" , moveInput.x );
             animator.SetFloat("LastInputY" , moveInput.y );
         }
@@ -51,17 +57,7 @@ public class PlayerMovement : MonoBehaviour
         moveInput.Normalize();
        
     }
-    
-// void flipSprite()
-// {
-//     if (moveInput.x > 0)
-//     {
-//         spriteRenderer.flipX = true; 
-//     }
-//     else if (moveInput.x < 0)
-//     {
-//         spriteRenderer.flipX = false; 
-//     }
-// }
+
+   
 
 }

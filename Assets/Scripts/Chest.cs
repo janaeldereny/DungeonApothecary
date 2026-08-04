@@ -11,6 +11,12 @@ public class Chest : MonoBehaviour
     private ItemScriptableObject originalItem;
     public GameObject icon;
 
+    public AudioSource audioSource;
+    public AudioClip chestOpenSound;
+    //public AudioClip chestCloseSound;
+    public AudioClip chestRefilledSound;
+
+
     void Start()
     {
         originalItem = item;
@@ -21,6 +27,7 @@ public class Chest : MonoBehaviour
     {
          animator.SetBool("isOpen", true);
          icon.SetActive(false);
+         audioSource.PlayOneShot(chestOpenSound);
     }
     public IEnumerator Respawn()
 {
@@ -29,6 +36,8 @@ public class Chest : MonoBehaviour
     item = originalItem;
     icon.SetActive(true);
     animator.SetBool("isOpen", false);
+    audioSource.PlayOneShot(chestRefilledSound);
+
 }
 
 }
