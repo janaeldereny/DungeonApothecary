@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemScriptableObject
   itemName: Frost Remedy
   itemType: 2
-  itemIcon: {fileID: 6312270577781941826, guid: 1e58c05693be94f6daa926a9404a44dd, type: 3}
+  itemIcon: {fileID: 5417578515698972490, guid: cc2eed44adcf34d958ee2b7a0cb58ce2, type: 3}

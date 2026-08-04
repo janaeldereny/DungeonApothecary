@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemScriptableObject
   itemName: 'Arcane Elixir '
   itemType: 2
-  itemIcon: {fileID: 389616688712612486, guid: 56e71aecee4884ea9afd307d1b5e3e44, type: 3}
+  itemIcon: {fileID: 5119533491215117727, guid: cc2eed44adcf34d958ee2b7a0cb58ce2, type: 3}
