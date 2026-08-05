@@ -1998,8 +1998,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616339506}
-        m_TargetAssemblyTypeName: UIhandler, Assembly-CSharp
+      - m_Target: {fileID: 616339511}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: PauseGame
         m_Mode: 1
         m_Arguments:
@@ -7799,6 +7799,7 @@ GameObject:
   - component: {fileID: 616339508}
   - component: {fileID: 616339507}
   - component: {fileID: 616339506}
+  - component: {fileID: 616339511}
   m_Layer: 5
   m_Name: GAME UI
   m_TagString: Untagged
@@ -7823,8 +7824,7 @@ MonoBehaviour:
   - {fileID: 480872167}
   - {fileID: 562089186}
   scoreText: {fileID: 805408649}
-  bestScoreText: {fileID: 0}
-  pauseMenu: {fileID: 1372038356}
+  currentHearts: 3
 --- !u!114 &616339507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7911,6 +7911,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &616339511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616339505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7ec1161296d4614a90ffb75188dc17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
+  pausePanel: {fileID: 1372038350}
+  isPaused: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -8056,7 +8070,6 @@ MonoBehaviour:
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
-  exiting: 0
   calmingDuration: 2
   enemyExitingSpeed: 5
   enemyChasingSpeed: 3
@@ -8064,7 +8077,6 @@ MonoBehaviour:
   currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
-  spawner: {fileID: 0}
 --- !u!95 &628958513
 Animator:
   serializedVersion: 7
@@ -8947,7 +8959,6 @@ MonoBehaviour:
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
-  exiting: 0
   calmingDuration: 2
   enemyExitingSpeed: 5
   enemyChasingSpeed: 3
@@ -8955,7 +8966,6 @@ MonoBehaviour:
   currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
-  spawner: {fileID: 0}
 --- !u!95 &781573635
 Animator:
   serializedVersion: 7
@@ -11644,7 +11654,6 @@ MonoBehaviour:
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
-  exiting: 0
   calmingDuration: 2
   enemyExitingSpeed: 5
   enemyChasingSpeed: 3
@@ -11652,7 +11661,6 @@ MonoBehaviour:
   currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
-  spawner: {fileID: 0}
 --- !u!61 &1477881607
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14152,7 +14160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65274fe0d602407294b7c25f351ab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  inventoryUi: {fileID: 1841731775}
   items:
   - {fileID: 0}
   - {fileID: 0}

@@ -15,12 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerDeath playerDeath;
     [SerializeField] private SaveSystem saveSystem;
 
-    
-
     private void Awake()
 
     {
-        
         if (Instance == null)
         {
             Instance = this;
@@ -31,15 +28,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-       
     }
 
    private void Start()
     {
         score =0;
         uiHandler.UpdateScore(score);
-       
-        
     }
 
     public void AddScore(int amount = 1)
@@ -83,8 +77,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
 
     }
-
-    
 
 }
 

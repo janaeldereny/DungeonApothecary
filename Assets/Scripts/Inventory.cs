@@ -1,9 +1,12 @@
 using UnityEngine;
+using System;
 
 public class Inventory : MonoBehaviour
 {
-     [SerializeField] private InventoryUi inventoryUi; 
+    public event Action OnInventoryChanged;
+
    public ItemScriptableObject[] items = new ItemScriptableObject[2];
+
    public bool AddItem(ItemScriptableObject item)
    {
        for (int i = 0; i < items.Length; i++)
@@ -11,6 +14,7 @@ public class Inventory : MonoBehaviour
            if (items[i] == null)
            {
                items[i] = item;
+               OnInventoryChanged?.Invoke();
                return true;
            }
        }
@@ -23,6 +27,9 @@ public class Inventory : MonoBehaviour
         {
             ItemScriptableObject droppedItem = items[1];
             items[1] = null;
+
+            OnInventoryChanged?.Invoke();
+
             return droppedItem;
         }
 
@@ -30,6 +37,9 @@ public class Inventory : MonoBehaviour
         {
             ItemScriptableObject droppedItem = items[0];
             items[0] = null;
+
+            OnInventoryChanged?.Invoke();
+
             return droppedItem;
         }
 
@@ -40,7 +50,7 @@ public class Inventory : MonoBehaviour
    {
         items[0]= cure;
         items[1] = null;
-        inventoryUi.Refresh();
+        OnInventoryChanged?.Invoke();
       
    }
 

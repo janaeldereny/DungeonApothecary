@@ -5,6 +5,5 @@ using UnityEngine;
     {
         public EnemyTypes EnemyType;
         public ItemScriptableObject requiredCure;   
-        //public Sprite floatingIcon;                 
-        
+
     }

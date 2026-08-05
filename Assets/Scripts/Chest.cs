@@ -13,7 +13,6 @@ public class Chest : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip chestOpenSound;
-    //public AudioClip chestCloseSound;
     public AudioClip chestRefilledSound;
 
 

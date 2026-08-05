@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]private AIDestinationSetter aIDestinationSetter;
     [SerializeField] private AIPath aipath;
     [SerializeField] private Transform doorC;
-     [SerializeField] public bool exiting;
+    
      [SerializeField] private float calmingDuration = 1f;
      [SerializeField] private float enemyExitingSpeed = 5f;
      [SerializeField] private float enemyChasingSpeed = 1.5f;
@@ -19,18 +19,16 @@ public class Enemy : MonoBehaviour
 
      public EnemyStates currentState;
 
-
      [SerializeField] private SpriteRenderer spriteRenderer;
      [SerializeField] private GameObject floatingIcon;
-     [SerializeField] private EnemySpawner spawner;
 
+
+    public event Action<Enemy> OnEnemyExited;
 
         void Start()
         {
             floatingIcon.SetActive(true);
             currentState = EnemyStates.Waiting; 
-
-            spawner = GetComponentInParent<EnemySpawner>();
             aipath = GetComponent<AIPath>();
         }
 
@@ -41,34 +39,33 @@ public class Enemy : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         switch (currentState)
-    {
-        case EnemyStates.Waiting:
-            
-            patienceTimer -= Time.deltaTime;
-            if (patienceTimer <= 0f)
-            {
-                EnterChasing(); 
-            }
-            break;
+        {
+            case EnemyStates.Waiting:
+                
+                patienceTimer -= Time.deltaTime;
+                if (patienceTimer <= 0f)
+                {
+                    EnterChasing(); 
+                }
+                break;
 
-        case EnemyStates.Chasing:
-            aIDestinationSetter.target = player;
-            // EnterCalming();
+            case EnemyStates.Chasing:
+                aIDestinationSetter.target = player;
 
-            break;
+                break;
 
-        case EnemyStates.Exiting:
-    
-            if (Vector2.Distance(transform.position, doorC.position) < 0.2f)
-            {
-                Destroy(gameObject);
-            }
-            break;
-    }
+            case EnemyStates.Exiting:
+        
+                if (Vector2.Distance(transform.position, doorC.position) < 0.2f)
+                {
+                    Destroy(gameObject);
+                }
+                break;
+        }
         
     }
 
@@ -78,18 +75,13 @@ public class Enemy : MonoBehaviour
          aipath.maxSpeed = enemyChasingSpeed; 
     }
 
-    public void EnemyExits()
+    public void EnterExiting()
     {
         currentState = EnemyStates.Exiting;
-        exiting = true;
-        
         aIDestinationSetter.target = doorC;
-        Debug.Log("Enemy Exits");
-    
-        if(spawner != null)
-        {
-            spawner.RegisterMonsterHealed();
-        }
+        
+            OnEnemyExited?.Invoke(this);
+
         aipath.maxSpeed = enemyExitingSpeed; 
     }
 
@@ -107,17 +99,16 @@ private IEnumerator CalmingRoutine()
 {
     yield return new WaitForSeconds(calmingDuration);
     aipath.canMove = true;
-    EnemyExits(); 
+    EnterExiting(); 
 }
 
-    public void SetSpawner(EnemySpawner spawnerREF)
-    {
-        spawner = spawnerREF;
-    }
 
     public void SetPatienceTimer(float timer)
     {
         patienceTimer = timer;
     }
+
+
+    
 
 }

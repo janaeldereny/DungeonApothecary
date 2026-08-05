@@ -23,10 +23,10 @@ public class EnemySpawner : MonoBehaviour
 
 
     public int maxEnemiesInRoom = 2;
-      public float startDelay = 1f; 
+    public float startDelay = 1f; 
     public float spawnInterval = 3f;
 
-    // Track active enemies in the room
+    
     private List<GameObject> activeEnemies = new List<GameObject>();
 
     private void Start()
@@ -62,14 +62,12 @@ public class EnemySpawner : MonoBehaviour
         }
 
         GameObject spawnedEnemy = Instantiate(selectedEnemyPrefab, selectedDoor.position, selectedDoor.rotation);
-        //spawnedEnemy.SendMessage("SetPatienceTimer", currentPatienceTimer, SendMessageOptions.DontRequireReceiver);
-        Enemy enemyScript = spawnedEnemy.GetComponent<Enemy>();
-        if (enemyScript != null)
+        Enemy enemy = spawnedEnemy.GetComponent<Enemy>();
+        if(enemy!= null)
         {
-            enemyScript.SetSpawner(this);
+            enemy.SetPatienceTimer(currentPatienceTimer);
+            enemy.OnEnemyExited += HandleEnemyExited;
         }
-
-
 
         activeEnemies.Add(spawnedEnemy);
     }
@@ -78,7 +76,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void CleanupDestroyedEnemies()
     {
-        // Remove null references from the list (enemies killed/destroyed in-game)
         activeEnemies.RemoveAll(enemy => enemy == null);
     }
 
@@ -86,7 +83,6 @@ public class EnemySpawner : MonoBehaviour
     {
         monstersHealed++;
         UpdateDifficulty();
-        Debug.Log("Monsters Healed: " + monstersHealed + " | Current Patience Timer: " + currentPatienceTimer + " | Current Spawn Interval: " + spawnInterval);
     }
 
     private void UpdateDifficulty()
@@ -103,6 +99,13 @@ public class EnemySpawner : MonoBehaviour
             CancelInvoke(nameof(SpawnCheck));
             InvokeRepeating(nameof(SpawnCheck), spawnInterval, spawnInterval);
         }
+    }
+
+    private void HandleEnemyExited(Enemy enemy)
+    {
+        RegisterMonsterHealed();
+
+        enemy.OnEnemyExited -= HandleEnemyExited;
     }
 
 }

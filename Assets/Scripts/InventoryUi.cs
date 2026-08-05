@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class InventoryUi : MonoBehaviour
 {
-    //private Inventory inventory;
     [SerializeField] private Inventory inventory;
     public Image item1Image;
     public Image item2Image;
@@ -20,6 +19,16 @@ public class InventoryUi : MonoBehaviour
 
         if (inventory.items[1] != null)
             item2Image.sprite = inventory.items[1].itemIcon;
+    }
+
+    private void OnEnable()
+    {
+        inventory.OnInventoryChanged += Refresh;
+    }
+
+    private void OnDisable()
+    {
+        inventory.OnInventoryChanged -= Refresh;
     }
 
 }
