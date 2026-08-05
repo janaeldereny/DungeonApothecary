@@ -82,8 +82,7 @@ public class Enemy : MonoBehaviour
     {
         currentState = EnemyStates.Exiting;
         exiting = true;
-        //floatingIcon.SetActive(false);
-        //spriteRenderer.color = Color.white;
+        
         aIDestinationSetter.target = doorC;
         Debug.Log("Enemy Exits");
     
@@ -121,14 +120,4 @@ private IEnumerator CalmingRoutine()
         patienceTimer = timer;
     }
 
-
-    // private void UpdateSprite()
-    // {
-    //     Vector2 vel = aipath.desiredVelocity;
-    //     if (vel.y > 0); // up
-    //     else if (vel.y < 0); // down
-
-    //     if (vel.x > 0); // right
-    //     else if (vel.x < 0); // left
-    // }
 }

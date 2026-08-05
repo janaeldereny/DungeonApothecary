@@ -6,26 +6,6 @@ public class PauseMenu : MonoBehaviour
 
     public bool isPaused = false;
 
-    // private void Update()
-
-    // {
-
-    //     if (Input.GetKeyDown(KeyCode.Escape))
-
-    //     {
-    //         if (isPaused)
-
-    //             ResumeGame();
-
-    //         else
-
-    //             PauseGame();
-
-    //     }
-
-    // }
-
-
     public void ResumeGame()
 
     {
@@ -37,19 +17,6 @@ public class PauseMenu : MonoBehaviour
 
     }
 
-    public void RestartLevel()
-
-    {
-        Time.timeScale = 1f;
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
-
-        );
-
-    }
-
     public void HomeMenu()
 
     {
@@ -57,6 +24,16 @@ public class PauseMenu : MonoBehaviour
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
 
+    }
+
+     public void PauseGame()
+
+    {
+        pausePanel.SetActive(true);
+
+        Time.timeScale = 0f;
+
+        isPaused = true;
     }
 
 }
