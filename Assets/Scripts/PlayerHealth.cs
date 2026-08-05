@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-        [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private bool isInvincible = false;
 
     public bool TakeDamage()
@@ -34,7 +34,7 @@ private IEnumerator FlashEffect()
         elapsed += flashInterval;
     }
 
-    spriteRenderer.enabled = true;   // make sure it ends visible, not stuck invisible
+    spriteRenderer.enabled = true; 
 }
 
 

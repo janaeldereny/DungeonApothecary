@@ -49,7 +49,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void HealEnemy(Enemy enemy)
     {
-        GameManager.Instance.score++;
+        GameManager.Instance.AddScore(1);
         uIhandler.UpdateScore(GameManager.Instance.score);
 
         audioSource.PlayOneShot(correctCureSound);

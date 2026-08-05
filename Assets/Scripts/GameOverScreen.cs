@@ -30,4 +30,11 @@ public class GameOverScreen : MonoBehaviour
         Time.timeScale = 1f;
        SceneManager.LoadScene("Main Menu");
    }
+
+   public void Show(int score, int bestScore)
+    {
+         Score(score);
+        Best(bestScore);
+        gameObject.SetActive(true);
+    }
 }

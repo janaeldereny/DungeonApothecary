@@ -1530,6 +1530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 108947708}
   - component: {fileID: 108947707}
+  - component: {fileID: 108947709}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1554,9 +1555,9 @@ MonoBehaviour:
   bestScore: 0
   hearts: 3
   uiHandler: {fileID: 616339506}
-  gameOverPanel: {fileID: 1941186126}
   gameOverScreen: {fileID: 1941186132}
   playerDeath: {fileID: 305742520}
+  saveSystem: {fileID: 108947709}
 --- !u!4 &108947708
 Transform:
   m_ObjectHideFlags: 0
@@ -1572,6 +1573,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &108947709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108947706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059e183cfae7a4f9ea7ef72ae736e131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveSystem
 --- !u!1 &115790754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,18 +3237,12 @@ MonoBehaviour:
   table: {fileID: 0}
   currentBasket: {fileID: 0}
   inventory: {fileID: 1732933434}
-  currentEnemy: {fileID: 0}
   craftManager: {fileID: 1544340073}
-  gameManager: {fileID: 108947707}
-  playerHealth: {fileID: 305742509}
-  uIhandler: {fileID: 616339506}
   audioSource: {fileID: 305742517}
   pickupSound: {fileID: 8300000, guid: 9e7cf927213654f2d9023c0d436fbfe5, type: 3}
   inventoryFullSound: {fileID: 8300000, guid: 5cefb3f3ab7a447ce85daa7d455487bf, type: 3}
   craftingSound: {fileID: 8300000, guid: 9e7cf927213654f2d9023c0d436fbfe5, type: 3}
   dropSound: {fileID: 8300000, guid: bf6bfb09af8f54429b68eb6b896d96e8, type: 3}
-  touchedEnemySound: {fileID: 8300000, guid: da0bdd1b7f42141a2b9889b2eede5cbe, type: 3}
-  correctCureSound: {fileID: 8300000, guid: 288393d5a58a743608d1384adc6dba98, type: 3}
 --- !u!61 &305742512
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3322,33 +3329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 3.5
-  audioSource: {fileID: 305742518}
-  footstepSounds:
-  - {fileID: 8300000, guid: 1b6726b2e2e864bf4a1b58e04defc505, type: 3}
-  - {fileID: 8300000, guid: 32c3e18586766445b9df6d690dd907c6, type: 3}
-  - {fileID: 8300000, guid: 8b21c262e364b46e29f32ecb50940f2e, type: 3}
-  - {fileID: 8300000, guid: 1d51fc04c16304544b6604287ba4e1ff, type: 3}
-  - {fileID: 8300000, guid: 901a30d414f4b4a2e9df901701c996ac, type: 3}
-  - {fileID: 8300000, guid: 6a2511082dbea406e8463c8a156a30f9, type: 3}
-  - {fileID: 8300000, guid: 9a641894958324ffda6ef69882ad5345, type: 3}
-  - {fileID: 8300000, guid: 2f740d490e4c245aeb244c372896745d, type: 3}
-  - {fileID: 8300000, guid: 61dd20f941bb44723adfea282e3461f6, type: 3}
-  - {fileID: 8300000, guid: 61dd20f941bb44723adfea282e3461f6, type: 3}
-  - {fileID: 8300000, guid: 3a5c2cdceb7ad4d20926e62ba7b219b5, type: 3}
-  - {fileID: 8300000, guid: 8c7968da2f2b64e5ebee92a1ecc2d075, type: 3}
-  - {fileID: 8300000, guid: 6b82cc5c9055d4dd8b9fa30efc2b679d, type: 3}
-  - {fileID: 8300000, guid: 1d062732c154c46a1ac6a37040b85a76, type: 3}
-  - {fileID: 8300000, guid: afcfdbd9cf71c42aaa13533689e59ee5, type: 3}
-  - {fileID: 8300000, guid: ddb45997dd6d44155b784dbf48af9fe2, type: 3}
-  - {fileID: 8300000, guid: b31378997818147e49b8fad43ff177dd, type: 3}
-  - {fileID: 8300000, guid: 924543f0d54014a0aba5714e0b838805, type: 3}
-  - {fileID: 8300000, guid: df808f648a7d54649b7563ceea76833e, type: 3}
-  - {fileID: 8300000, guid: cbb98cf55f5584ddfbf95175d5517419, type: 3}
-  - {fileID: 8300000, guid: 07c76b6928c224e009f8b95ab6574401, type: 3}
-  - {fileID: 8300000, guid: 182f271b5b92c4550808b51ff9418c25, type: 3}
-  - {fileID: 8300000, guid: 74697fa6cee1a481eb84762c28adc254, type: 3}
-  footstepInterval: 0.5
-  isPlayingFootstepSound: 0
 --- !u!212 &305742515
 SpriteRenderer:
   serializedVersion: 3

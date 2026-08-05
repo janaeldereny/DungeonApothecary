@@ -7,13 +7,9 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private Chest currentChest;
     [SerializeField] private CraftingTable table;
     [SerializeField] private Basket currentBasket;
-    
     [SerializeField] private Inventory inventory;
-    [SerializeField] private Enemy currentEnemy;
     [SerializeField] private CraftManager craftManager;
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private PlayerHealth playerHealth;
-     [SerializeField] private UIhandler uIhandler;
+
     
 
 
@@ -22,16 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private AudioClip inventoryFullSound;
     [SerializeField] private AudioClip craftingSound;
     [SerializeField] private AudioClip dropSound;
-    [SerializeField] private AudioClip touchedEnemySound;
-    [SerializeField] private AudioClip correctCureSound;
-
-
-
-    //[SerializeField] public EnemySO enemyData;
-
-
-    //SerializeField] private bool isFull = false;
-
+    
     
      private void OnEnable()
     {
@@ -70,8 +57,6 @@ public class PlayerInteraction : MonoBehaviour
                 Debug.Log ("inventory is full");
 
                 audioSource.PlayOneShot(inventoryFullSound);
-
-                //isFull = true;
             }
             
         }
@@ -94,7 +79,6 @@ public class PlayerInteraction : MonoBehaviour
             audioSource.PlayOneShot(dropSound);
 
             Debug.Log(droppedItem + " item dropped");
-            //isFull = false;
         }
     }
 
@@ -110,25 +94,18 @@ public class PlayerInteraction : MonoBehaviour
         {
             currentChest = chest;
 
-            //Debug.Log("Entered Chest");
-
         }
 
         Basket basket = other.GetComponent<Basket>();
         if (basket != null)
         {
-
             currentBasket = basket;
-
-            //Debug.Log("Entered Basket");
-
         }
 
         CraftingTable craftingtable = other.GetComponent<CraftingTable>();
         if (craftingtable != null)
         {
              table = craftingtable;
-             //Debug.Log("Entered table");
         }
 
 
@@ -142,20 +119,16 @@ public class PlayerInteraction : MonoBehaviour
         if (other.GetComponent<Chest>() == currentChest)
         {
             currentChest = null;
-            //Debug.Log("Exit Chest");
         }
 
         else if (other.GetComponent<Basket>() == currentBasket)
         {
             currentBasket = null;
-
-            //Debug.Log("Exit Basket");
         }
 
         else if (other.GetComponent<CraftingTable>() == table)
         {
             table = null;
-             //Debug.Log("Exit table");
         }
 
     }
