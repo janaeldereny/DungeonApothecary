@@ -14,16 +14,16 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayerHealth playerHealth;
      [SerializeField] private UIhandler uIhandler;
-     [SerializeField] private EnemyStates currentState;
+    
 
 
-     public AudioSource audioSource;
-    public AudioClip pickupSound;
-    public AudioClip inventoryFullSound;
-    public AudioClip craftingSound;
-    public AudioClip dropSound;
-    public AudioClip touchedEnemySound;
-    public AudioClip correctCureSound;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip pickupSound;
+    [SerializeField] private AudioClip inventoryFullSound;
+    [SerializeField] private AudioClip craftingSound;
+    [SerializeField] private AudioClip dropSound;
+    [SerializeField] private AudioClip touchedEnemySound;
+    [SerializeField] private AudioClip correctCureSound;
 
 
 
@@ -133,56 +133,6 @@ public class PlayerInteraction : MonoBehaviour
 
 
     }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-
-        Enemy enemy = other.GetComponent<Enemy>();
-        if (enemy != null && ! gameManager.isGameover)
-        {
-            currentEnemy = enemy;
-            Debug.Log("Touched an enemy");
-
-            
-    {
-        ItemScriptableObject heldCure = inventory.items[0];
-
-            
-             if (currentEnemy.currentState == EnemyStates.Exiting || currentEnemy.currentState == EnemyStates.Calming)
-            {
-                Debug.Log("Enemy is exiting or calming, no damage taken.");
-            }
-            else if (heldCure == enemy.enemyData.requiredCure)
-            {
-                gameManager.score++;
-                uIhandler.UpdateScore(gameManager.score);
-
-
-                audioSource.PlayOneShot(correctCureSound);
-                Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + GameManager.Instance.hearts);
-                Debug.Log("Monster Healed");
-                currentEnemy.EnterCalming();
-                inventory.items[0] = null;
-                inventoryUi.Refresh();
-            }
-            else
-            {
-                if (playerHealth.TakeDamage())
-                {
-                    audioSource.PlayOneShot(touchedEnemySound);
-                    uIhandler.UpdateScore(gameManager.score);
-                    GameManager.Instance.LoseHeart();
-                }
-            }
-    }
-
-        }
-
-                
-                Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + GameManager.Instance.hearts);
-
-                
-            }
     
 
 
@@ -206,13 +156,6 @@ public class PlayerInteraction : MonoBehaviour
         {
             table = null;
              //Debug.Log("Exit table");
-        }
-
-
-        else if ( other.GetComponent<Enemy>() == currentEnemy)
-        {
-            currentEnemy = null;
-              //Debug.Log("Exit enemy");
         }
 
     }
