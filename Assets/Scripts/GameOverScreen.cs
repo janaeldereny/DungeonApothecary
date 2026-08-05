@@ -10,7 +10,7 @@ public class GameOverScreen : MonoBehaviour
    public void Score(int score)
    {
        gameObject.SetActive(true);
-        scoreText.text = score.ToString() +" Points";
+        scoreText.text = "Score: " + score.ToString() +" Points";
    }
 
    public void Best(int best)
