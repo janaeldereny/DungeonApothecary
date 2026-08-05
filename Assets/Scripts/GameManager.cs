@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIhandler uiHandler;
     [SerializeField] public GameObject gameOverPanel;
     [SerializeField] private GameOverScreen gameOverScreen;
+    [SerializeField] private PlayerDeath playerDeath;
 
     
 
@@ -74,7 +75,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log ("Game Over");
             isGameover=true;
-            GameOver();
+            playerDeath.Die();
         }
 
     }

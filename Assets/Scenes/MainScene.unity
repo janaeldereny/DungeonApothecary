@@ -1556,6 +1556,7 @@ MonoBehaviour:
   uiHandler: {fileID: 616339506}
   gameOverPanel: {fileID: 1941186126}
   gameOverScreen: {fileID: 1941186132}
+  playerDeath: {fileID: 305742520}
 --- !u!4 &108947708
 Transform:
   m_ObjectHideFlags: 0
@@ -3115,6 +3116,7 @@ GameObject:
   - component: {fileID: 305742517}
   - component: {fileID: 305742518}
   - component: {fileID: 305742519}
+  - component: {fileID: 305742520}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3650,6 +3652,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ae4c3cc39f8994d4bb6ba097daccfa5e, type: 3}
   - {fileID: 8300000, guid: 37abbbf0cd70549e6814210d48e239e2, type: 3}
   - {fileID: 8300000, guid: 2f3ba4a7ffc2b4f66a237d98c25d7f06, type: 3}
+--- !u!114 &305742520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305742507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b922a997bf1b48e498b0f8ed041ca33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
+  spriteRenderer: {fileID: 305742515}
+  fadeDuration: 1
 --- !u!1 &344984163
 GameObject:
   m_ObjectHideFlags: 0
