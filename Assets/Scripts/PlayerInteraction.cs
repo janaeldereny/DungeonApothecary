@@ -131,6 +131,12 @@ public class PlayerInteraction : MonoBehaviour
              //Debug.Log("Entered table");
         }
 
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null && ! gameManager.isGameover)
         {
@@ -161,24 +167,24 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                playerHealth.TakeDamage();
-                
-                audioSource.PlayOneShot(touchedEnemySound);
+                if (playerHealth.TakeDamage())
+                {
+                    audioSource.PlayOneShot(touchedEnemySound);
+                    uIhandler.UpdateScore(gameManager.score);
+                    GameManager.Instance.LoseHeart();
+                }
+            }
+    }
 
-                uIhandler.UpdateScore(gameManager.score);
-                GameManager.Instance.LoseHeart();
+        }
 
                 
                 Debug.Log("Score: " + gameManager.score + " | " + "Hearts: " + GameManager.Instance.hearts);
 
                 
             }
-    }
-
-        }
-
-    }
     
+
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -210,6 +216,4 @@ public class PlayerInteraction : MonoBehaviour
         }
 
     }
-
-
 }

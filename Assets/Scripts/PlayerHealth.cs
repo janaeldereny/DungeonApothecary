@@ -6,14 +6,14 @@ public class PlayerHealth : MonoBehaviour
         [SerializeField] private SpriteRenderer spriteRenderer;
     private bool isInvincible = false;
 
-    public void TakeDamage()
+    public bool TakeDamage()
 {
-    if (isInvincible) return;   // لو لسه في الفترة، تجاهلي أي ضربة تانية
-
+   if (isInvincible) return false;
    
     isInvincible = true;
     StartCoroutine(InvincibilityTimer());
     StartCoroutine(FlashEffect());
+    return true;
 }
 
 private IEnumerator InvincibilityTimer()
