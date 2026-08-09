@@ -8067,6 +8067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyData: {fileID: 11400000, guid: 7df22f940d86b423895b64a6e89f5a0f, type: 2}
+  player: {fileID: 0}
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
@@ -8074,7 +8075,6 @@ MonoBehaviour:
   enemyExitingSpeed: 5
   enemyChasingSpeed: 3
   patienceTimer: 0
-  currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
 --- !u!95 &628958513
@@ -8956,6 +8956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyData: {fileID: 11400000, guid: 32363e26825b34d7ea20261c6af5a2e0, type: 2}
+  player: {fileID: 0}
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
@@ -8963,7 +8964,6 @@ MonoBehaviour:
   enemyExitingSpeed: 5
   enemyChasingSpeed: 3
   patienceTimer: 0
-  currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
 --- !u!95 &781573635
@@ -11651,6 +11651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyData: {fileID: 11400000, guid: 32363e26825b34d7ea20261c6af5a2e0, type: 2}
+  player: {fileID: 0}
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
@@ -11658,7 +11659,6 @@ MonoBehaviour:
   enemyExitingSpeed: 5
   enemyChasingSpeed: 3
   patienceTimer: 0
-  currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
 --- !u!61 &1477881607

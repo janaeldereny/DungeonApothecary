@@ -7,20 +7,22 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     public EnemySO enemyData;  
-    private Transform player;
-    [SerializeField]private AIDestinationSetter aIDestinationSetter;
-    [SerializeField] private AIPath aipath;
-    [SerializeField] private Transform doorC;
+    public Transform player;
+    public AIDestinationSetter aIDestinationSetter;
+    public AIPath aipath;
+    public Transform doorC;
     
-     [SerializeField] private float calmingDuration = 1f;
-     [SerializeField] private float enemyExitingSpeed = 5f;
-     [SerializeField] private float enemyChasingSpeed = 1.5f;
-     [SerializeField] private float patienceTimer = 4f;
+     public float calmingDuration = 1f;
+     public float enemyExitingSpeed = 5f;
+     public float enemyChasingSpeed = 1.5f;
+     public float patienceTimer = 4f;
 
-     public EnemyStates currentState;
+     //public EnemyStates currentState;
 
-     [SerializeField] private SpriteRenderer spriteRenderer;
-     [SerializeField] private GameObject floatingIcon;
+     public SpriteRenderer spriteRenderer;
+     public GameObject floatingIcon;
+
+     private IEnemyState currentStat;
 
 
     public event Action<Enemy> OnEnemyExited;
@@ -28,7 +30,7 @@ public class Enemy : MonoBehaviour
         void Start()
         {
             floatingIcon.SetActive(true);
-            currentState = EnemyStates.Waiting; 
+            ChangeState(new EnemyWaitingState(this));
             aipath = GetComponent<AIPath>();
         }
 
@@ -42,73 +44,39 @@ public class Enemy : MonoBehaviour
     
     void Update()
     {
-        switch (currentState)
-        {
-            case EnemyStates.Waiting:
-                
-                patienceTimer -= Time.deltaTime;
-                if (patienceTimer <= 0f)
-                {
-                    EnterChasing(); 
-                }
-                break;
-
-            case EnemyStates.Chasing:
-                aIDestinationSetter.target = player;
-
-                break;
-
-            case EnemyStates.Exiting:
-        
-                if (Vector2.Distance(transform.position, doorC.position) < 0.2f)
-                {
-                    Destroy(gameObject);
-                }
-                break;
-        }
-        
+        currentStat?.Execute();
     }
 
-    private void EnterChasing()
+    public void ChangeState(IEnemyState newState)
     {
-        currentState = EnemyStates.Chasing;
-         aipath.maxSpeed = enemyChasingSpeed; 
+        currentStat?.Exit();
+
+        currentStat = newState;
+
+        currentStat.Enter();
     }
 
-    public void EnterExiting()
+    public bool CanBeCured()
     {
-        currentState = EnemyStates.Exiting;
-        aIDestinationSetter.target = doorC;
-        
-            OnEnemyExited?.Invoke(this);
-
-        aipath.maxSpeed = enemyExitingSpeed; 
+        return currentStat is EnemyWaitingState || currentStat is EnemyChasingState;
     }
 
-    public void EnterCalming()
+    public void Calm()
+    {
+        ChangeState(new EnemyCalmingState(this));
+    }
+
+    public void EnemyExited()
+    {
+        OnEnemyExited?.Invoke(this);
+        Destroy(gameObject);
+
+    }
+
+public void SetPatienceTimer(float value)
 {
-    currentState = EnemyStates.Calming;
-    floatingIcon.SetActive(false);
-    spriteRenderer.color = Color.white;
-    aipath.canMove = false;
-
-    StartCoroutine(CalmingRoutine());
+    patienceTimer = value;
 }
 
-private IEnumerator CalmingRoutine()
-{
-    yield return new WaitForSeconds(calmingDuration);
-    aipath.canMove = true;
-    EnterExiting(); 
-}
-
-
-    public void SetPatienceTimer(float timer)
-    {
-        patienceTimer = timer;
-    }
-
-
-    
 
 }

@@ -28,7 +28,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void HandleEnemyCollision(Enemy enemy)
     {
-        if (currentEnemy.currentState == EnemyStates.Exiting || currentEnemy.currentState == EnemyStates.Calming)
+        if (!enemy.CanBeCured())
         {
             return;
         }
@@ -54,7 +54,7 @@ public class PlayerCombat : MonoBehaviour
 
         audioSource.PlayOneShot(correctCureSound);
 
-        currentEnemy.EnterCalming();
+        enemy.Calm();
 
         // inventory.RemoveHeldItem();
         inventory.items[0] = null;

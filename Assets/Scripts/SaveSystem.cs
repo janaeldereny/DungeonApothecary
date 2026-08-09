@@ -4,13 +4,9 @@ using System.IO;
 
 public class SaveSystem : MonoBehaviour
 {  
-    private string savePath;
+    private string savePath => Path.Combine(Application.persistentDataPath, "save.json");
 
 
-    private void Awake()
-    {
-     savePath = Path.Combine(Application.persistentDataPath, "save.json");
-    }
     public void SaveGame(int bestScore)
     {
         SaveData data = new SaveData();
