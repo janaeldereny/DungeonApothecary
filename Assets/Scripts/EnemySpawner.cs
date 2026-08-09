@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform doorA;
     public Transform doorB;
 
-    public float patienceTimerStart = 15f;
+    public float patienceTimerStart = 5f;
     public float patienceShrinkAmount = 2f;
     public int patienceShrinkEveryNHealed = 2;
     public float patienceMinCap = 4f;
@@ -64,7 +64,12 @@ public class EnemySpawner : MonoBehaviour
           
         }
 
-        GameObject spawnedEnemy = Instantiate(selectedEnemyPrefab, selectedDoor.position, selectedDoor.rotation);
+        Vector3 spawnPosition = selectedDoor.position;
+        spawnPosition.y += Random.Range(-0.5f, 0.5f);
+
+
+
+        GameObject spawnedEnemy = Instantiate(selectedEnemyPrefab, spawnPosition, selectedDoor.rotation);
         Enemy enemy = spawnedEnemy.GetComponent<Enemy>();
         EnemyAnimation animation = spawnedEnemy.GetComponent<EnemyAnimation>();
         animation.SetIdleDirection(facingRight);

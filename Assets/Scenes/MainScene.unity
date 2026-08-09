@@ -8071,6 +8071,7 @@ MonoBehaviour:
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
+  rb: {fileID: 0}
   calmingDuration: 2
   enemyExitingSpeed: 5
   enemyChasingSpeed: 3
@@ -8960,6 +8961,7 @@ MonoBehaviour:
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
+  rb: {fileID: 0}
   calmingDuration: 2
   enemyExitingSpeed: 5
   enemyChasingSpeed: 3
@@ -10298,7 +10300,7 @@ MonoBehaviour:
   - {fileID: 4907547973405573494, guid: b1b154ce782974ecda3e6facbecbcacf, type: 3}
   doorA: {fileID: 156068368}
   doorB: {fileID: 961752990}
-  patienceTimerStart: 20
+  patienceTimerStart: 5
   patienceShrinkAmount: 1
   patienceShrinkEveryNHealed: 3
   patienceMinCap: 6
@@ -11655,6 +11657,7 @@ MonoBehaviour:
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
+  rb: {fileID: 0}
   calmingDuration: 2
   enemyExitingSpeed: 5
   enemyChasingSpeed: 3
