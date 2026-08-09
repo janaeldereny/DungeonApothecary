@@ -90,7 +90,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.125, y: 1.0625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -162,7 +162,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.125, y: 1.0625}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1.125, y: 1.0625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -183,6 +183,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Chest
   animator: {fileID: 0}
   item: {fileID: 11400000, guid: aa05d8a04283b48fdb7a74edc6c22eda, type: 2}
+  icon: {fileID: 0}
+  audioSource: {fileID: 0}
+  chestOpenSound: {fileID: 0}
+  chestRefilledSound: {fileID: 0}
 --- !u!95 &5876952255420235310
 Animator:
   serializedVersion: 7
