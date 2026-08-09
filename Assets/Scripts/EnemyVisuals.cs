@@ -1,7 +1,7 @@
 using UnityEngine;
 using Pathfinding;
 
-public class MonsterVisuals : MonoBehaviour
+public class EnemyVisuals : MonoBehaviour
 {
     private AIPath aiPath;
     private Animator animator;
@@ -38,7 +38,7 @@ public class MonsterVisuals : MonoBehaviour
 
     }
 
-    
+        
 
 }
 

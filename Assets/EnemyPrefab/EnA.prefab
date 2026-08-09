@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3691987728178403706, guid: b478c690576aa4cd7a1789fdfbc25afe, type: 3}
+  m_Sprite: {fileID: -6693805614938032669, guid: b478c690576aa4cd7a1789fdfbc25afe, type: 3}
   m_Color: {r: 0.009697977, g: 0.6320754, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -546,6 +546,7 @@ MonoBehaviour:
   aIDestinationSetter: {fileID: -8945638703160448894}
   aipath: {fileID: 0}
   doorC: {fileID: 0}
+  rb: {fileID: 0}
   calmingDuration: 1
   enemyExitingSpeed: 5
   enemyChasingSpeed: 1.5

@@ -50,23 +50,32 @@ public class EnemySpawner : MonoBehaviour
         GameObject selectedEnemyPrefab = enemyPrefabs[randomEnemyIndex];
 
        Transform selectedDoor;
+       bool facingRight;
 
         if (Random.value > 0.5f)
         {
             selectedDoor = doorA; 
+            facingRight = true;
         }
         else
         {
             selectedDoor = doorB; 
+            facingRight = false;
+          
         }
 
         GameObject spawnedEnemy = Instantiate(selectedEnemyPrefab, selectedDoor.position, selectedDoor.rotation);
         Enemy enemy = spawnedEnemy.GetComponent<Enemy>();
+        EnemyAnimation animation = spawnedEnemy.GetComponent<EnemyAnimation>();
+        animation.SetIdleDirection(facingRight);
+        
+        
         if(enemy!= null)
         {
             enemy.SetPatienceTimer(currentPatienceTimer);
             enemy.OnEnemyExited += HandleEnemyExited;
         }
+
 
         activeEnemies.Add(spawnedEnemy);
     }

@@ -314,7 +314,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3691987728178403706, guid: b478c690576aa4cd7a1789fdfbc25afe, type: 3}
+  m_Sprite: {fileID: -6693805614938032669, guid: b478c690576aa4cd7a1789fdfbc25afe, type: 3}
   m_Color: {r: 0.009697977, g: 0.6320754, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -415,7 +415,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.4375}
+    oldSize: {x: 0.9375, y: 1.4375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -480,18 +480,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyData: {fileID: 11400000, guid: 32363e26825b34d7ea20261c6af5a2e0, type: 2}
+  player: {fileID: 0}
   aIDestinationSetter: {fileID: 0}
   aipath: {fileID: 0}
-  DoorC: {fileID: 0}
-  exiting: 0
+  doorC: {fileID: 0}
+  rb: {fileID: 0}
   calmingDuration: 1
   enemyExitingSpeed: 5
   enemyChasingSpeed: 1.5
   patienceTimer: 4
-  currentState: 0
   spriteRenderer: {fileID: 0}
   floatingIcon: {fileID: 0}
-  spawner: {fileID: 0}
 --- !u!82 &5369535750614009339
 AudioSource:
   m_ObjectHideFlags: 0
@@ -624,8 +623,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ae4c3cc39f8994d4bb6ba097daccfa5e, type: 3}
   - {fileID: 8300000, guid: 37abbbf0cd70549e6814210d48e239e2, type: 3}
   - {fileID: 8300000, guid: 2f3ba4a7ffc2b4f66a237d98c25d7f06, type: 3}
-  footstepInterval: 0.5
-  isPlayingFootstepSound: 0
 --- !u!1 &2292796357663069194
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,18 +981,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyData: {fileID: 11400000, guid: 7df22f940d86b423895b64a6e89f5a0f, type: 2}
+  player: {fileID: 0}
   aIDestinationSetter: {fileID: -1089815606102641416}
   aipath: {fileID: 0}
-  DoorC: {fileID: 0}
-  exiting: 0
+  doorC: {fileID: 0}
+  rb: {fileID: 0}
   calmingDuration: 1
   enemyExitingSpeed: 5
   enemyChasingSpeed: 1.5
   patienceTimer: 4
-  currentState: 0
   spriteRenderer: {fileID: 2633082720164290352}
   floatingIcon: {fileID: 6919545381889124915}
-  spawner: {fileID: 0}
 --- !u!114 &4802922973804118769
 MonoBehaviour:
   m_ObjectHideFlags: 0

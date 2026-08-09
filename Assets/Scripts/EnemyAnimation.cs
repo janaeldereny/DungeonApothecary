@@ -42,6 +42,12 @@ public class EnemyAnimation : MonoBehaviour
         }
 
     }
+
+    public void SetIdleDirection(bool facingRight)
+{
+    animator.SetFloat("lastmoveX", facingRight ? 1 : -1);
+    animator.SetFloat("lastmoveY", 0);
+}
     
 
 
