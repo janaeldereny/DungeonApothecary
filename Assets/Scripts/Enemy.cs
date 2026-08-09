@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     public AIDestinationSetter aIDestinationSetter;
     public AIPath aipath;
     public Transform doorC;
+
+    public Rigidbody2D rb;
     
      public float calmingDuration = 1f;
      public float enemyExitingSpeed = 5f;
@@ -36,6 +38,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         doorC = GameObject.FindGameObjectWithTag("DoorC").transform;
 

@@ -8,23 +8,22 @@ public class EnemySpawner : MonoBehaviour
     public Transform doorA;
     public Transform doorB;
 
-    public float patienceTimerStart = 20f;
-    public float patienceShrinkAmount = 1f;
-    public int patienceShrinkEveryNHealed = 3;
-    public float patienceMinCap = 6f;
+    public float patienceTimerStart = 15f;
+    public float patienceShrinkAmount = 2f;
+    public int patienceShrinkEveryNHealed = 2;
+    public float patienceMinCap = 4f;
 
 
-    public float gapMinCap = 2f;
-    public float gapShrinkAmount = 1f;
-    public int gapShrinkEveryNHealed = 5;
-
+    public float gapMinCap = 1f;
+    public float gapShrinkAmount = 0.5f;
+    public int gapShrinkEveryNHealed = 3;
     private float currentPatienceTimer;
     private int monstersHealed = 0;
 
 
     public int maxEnemiesInRoom = 2;
     public float startDelay = 1f; 
-    public float spawnInterval = 3f;
+    public float spawnInterval = 2f;
 
     
     private List<GameObject> activeEnemies = new List<GameObject>();

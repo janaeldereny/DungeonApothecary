@@ -4,8 +4,8 @@ using Pathfinding;
 public class MonsterVisuals : MonoBehaviour
 {
     private AIPath aiPath;
-
     private Animator animator;
+    private Transform player;
 
     private SpriteRenderer spriteRenderer;
 
@@ -14,17 +14,16 @@ public class MonsterVisuals : MonoBehaviour
     {
 
         aiPath = GetComponent<AIPath>();
-
         animator = GetComponentInChildren<Animator>();
-
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+     
 
     }
+
 
     private void Update()
 
     {
-
         float speed = aiPath.velocity.magnitude;
 
         animator.SetFloat("Speed", speed);
@@ -39,6 +38,7 @@ public class MonsterVisuals : MonoBehaviour
 
     }
 
+    
 
 }
 

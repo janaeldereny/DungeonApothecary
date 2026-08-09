@@ -17,6 +17,10 @@ public class EnemyCalmingState : IEnemyState
 
         enemy.aipath.canMove = false;
 
+        enemy.rb.linearVelocity = Vector2.zero;
+        enemy.rb.angularVelocity = 0f;
+        enemy.rb.bodyType = RigidbodyType2D.Kinematic;
+
         enemy.StartCoroutine(CalmingRoutine());
     }
 
@@ -34,6 +38,7 @@ public class EnemyCalmingState : IEnemyState
 
         yield return new WaitForSeconds(enemy.calmingDuration);
 
+        enemy.rb.bodyType = RigidbodyType2D.Dynamic;
         enemy.aipath.canMove = true;
 
         enemy.ChangeState(new EnemyExitingState(enemy));

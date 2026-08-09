@@ -262,8 +262,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ae4c3cc39f8994d4bb6ba097daccfa5e, type: 3}
   - {fileID: 8300000, guid: 37abbbf0cd70549e6814210d48e239e2, type: 3}
   - {fileID: 8300000, guid: 2f3ba4a7ffc2b4f66a237d98c25d7f06, type: 3}
-  footstepInterval: 0.5
-  isPlayingFootstepSound: 0
 --- !u!1 &1190403064534142621
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,18 +542,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyData: {fileID: 11400000, guid: 0a5c31aec076647e9b970628aaf87818, type: 2}
+  player: {fileID: 0}
   aIDestinationSetter: {fileID: -8945638703160448894}
   aipath: {fileID: 0}
-  DoorC: {fileID: 0}
-  exiting: 0
-  calmingDuration: 2
+  doorC: {fileID: 0}
+  calmingDuration: 1
   enemyExitingSpeed: 5
   enemyChasingSpeed: 1.5
   patienceTimer: 4
-  currentState: 0
   spriteRenderer: {fileID: 3985214057902852280}
   floatingIcon: {fileID: 5457543110805956013}
-  spawner: {fileID: 0}
 --- !u!114 &211988431269958326
 MonoBehaviour:
   m_ObjectHideFlags: 0

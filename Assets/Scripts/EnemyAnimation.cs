@@ -16,6 +16,8 @@ public class EnemyAnimation : MonoBehaviour
 
     }
 
+
+
     private void Update()
 
     {
